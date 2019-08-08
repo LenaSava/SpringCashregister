@@ -18,10 +18,7 @@ public class GreetingController {
     private MessageRepos messageRepos;
 
     @GetMapping("/")
-    public String greeting(
-            @RequestParam(name="name", required=false, defaultValue="World") String name,
-            Map<String, Object> model) {
-        model.put("name", name);
+    public String greeting(Map<String, Object> model) {
         return "greeting";
     }
     @GetMapping("/main")
