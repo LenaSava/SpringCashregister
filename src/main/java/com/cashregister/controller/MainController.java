@@ -1,4 +1,4 @@
-package com.cashregister;
+package com.cashregister.controller;
 
 import com.cashregister.domain.Message;
 import com.cashregister.repos.MessageRepos;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class MainController {
     @Autowired
     private MessageRepos messageRepos;
 
