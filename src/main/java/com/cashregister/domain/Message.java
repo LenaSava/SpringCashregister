@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 public class Message {
@@ -14,6 +13,8 @@ public class Message {
 
     private String text;
     private String tag;
+
+    private User author;
 
     public Message() {
     }
@@ -37,5 +38,13 @@ public class Message {
 
     public String getTag() {
         return tag;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }
