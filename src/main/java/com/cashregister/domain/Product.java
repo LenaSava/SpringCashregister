@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Message {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -16,10 +16,10 @@ public class Message {
 
     private User author;
 
-    public Message() {
+    public Product() {
     }
 
-    public Message(String text, String tag) {
+    public Product(String text, String tag) {
         this.text = text;
         this.tag = tag;
     }
