@@ -20,7 +20,7 @@ public class MainController {
 
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
-        return "greeting";
+        return "index";
     }
     @GetMapping("/main")
     public String main(Map<String, Object> model) {
