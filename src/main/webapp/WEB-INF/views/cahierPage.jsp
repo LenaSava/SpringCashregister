@@ -41,12 +41,13 @@
                 <c:forEach items="${products}" var="product">
                     <tr>
                         <td>${product.code}</td>
-                        <td>
-                            <c:out value="${language == 'ua'? product.name_ua: product.name}"/>
-                        </td>
+                        <td>${product.name_En}</td>
+<%--                        <td>--%>
+<%--                            <c:out value="${language == 'ua'? product.name_ua: product.name}"/>--%>
+<%--                        </td>--%>
                         <td>1</td>
                         <td>${product.cost}</td>
-                        <td><a href="/api/create_invoice?id=${product.id}"><fmt:message key="buy"/></a></td>
+                        <td><a href="/create_invoice?id=${product.id}"><fmt:message key="buy"/></a></td>
                     </tr>
                 </c:forEach>
             </table>

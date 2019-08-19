@@ -1,21 +1,26 @@
 package com.cashregister.controller;
 
+import com.cashregister.domain.Product;
 import com.cashregister.repos.ProductRepos;
+import com.cashregister.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class MenuPageController {
 
     @Autowired
-    private ProductRepos productRepos;
+    private ProductService productService;
 
     @GetMapping("/cashier_page")
     public String cashierPage(Map<String, Object> model) {
-
+        List<Product> products = productService.getAllProducts();
+        model.put("products", products);
         return "cahierPage";
     }
 

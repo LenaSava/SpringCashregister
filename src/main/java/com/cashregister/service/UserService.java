@@ -12,9 +12,9 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
-//    public UserService(UserRepo userRepo) {
-//        this.userRepo = userRepo;
-//    }
+    public UserService(UserRepo userRepo) {
+        this.userRepo = userRepo;
+    }
 //    @Override
 //    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        return userRepo.findByUsername(username);

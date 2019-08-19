@@ -1,16 +1,21 @@
 package com.cashregister.domain;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Set;
+
 
 @Data
 @Entity
 @Table(name = "usr")
+@DiscriminatorColumn(name = "role_id")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,17 +25,13 @@ public class User {
     private String username;
     @Column(name="password")
     private String password;
-    private boolean active;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    private Role role;
 
     public Long getId() {
         return id;
@@ -56,20 +57,13 @@ public class User {
         this.password = password;
     }
 
-    public boolean isActive() {
-        return active;
+
+    public Role getRole() {
+        return role;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
 //    @Override
