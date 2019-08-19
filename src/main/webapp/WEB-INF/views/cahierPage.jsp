@@ -19,45 +19,47 @@
 </div>
 
 
-
 <div class="w3-container w3-padding">
     <div class="w3-card-4">
         <jsp:include page="parts/header.jsp"></jsp:include>
         <jsp:include page="parts/menu.jsp"></jsp:include>
-
-
-
-
         <div class="w3-container w3-center w3-green">
             <h2>
                 <i><fmt:message key="product.list"/></i>
             </h2>
-            <table border="1" cellpadding="5" cellspacing="1" >
+            <form class="example" action="find_product">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <table border="1" cellpadding="5" cellspacing="1">
                 <tr>
                     <th><fmt:message key="code"/></th>
-                    <th><fmt:message key="product.name"/></th>
-                    <th><fmt:message key="price"/></th>
+                    <th><fmt:message key="product.id"/></th>
                     <th><fmt:message key="quantity"/></th>
+                    <th><fmt:message key="price"/></th>
                 </tr>
-                <c:forEach items="${products}" var="product" >
+                <c:forEach items="${products}" var="product">
                     <tr>
                         <td>${product.code}</td>
                         <td>
                             <c:out value="${language == 'ua'? product.name_ua: product.name}"/>
                         </td>
+                        <td>1</td>
                         <td>${product.cost}</td>
-                        <td>${product.quantity}</td>
-                        <td><a href="/api/show_create?id=${product.id}"><fmt:message key="edit"/></a></td>
+                        <td><a href="/api/create_invoice?id=${product.id}"><fmt:message key="buy"/></a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'"><fmt:message key="create.product"/></button>
+            <br>
+            <c:if test="${not empty errorMessage}">
+                <div class="w3-red"><fmt:message key="product.not.found"/></div>
+            </c:if>
         </div>
-        <%@ include file="parts/pagination.jsp" %>
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'"><fmt:message key="back.to.main"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'"><fmt:message
+            key="back.to.user.menu"/></button>
 </div>
 
 <jsp:include page="parts/footer.jsp"></jsp:include>

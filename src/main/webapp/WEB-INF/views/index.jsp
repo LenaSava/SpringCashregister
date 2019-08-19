@@ -19,6 +19,7 @@
 <div class="w3-container w3-blue-grey w3-opacity w3-right-align">
   <h1><fmt:message key="cash.register"/></h1>
 </div>
+<c:out value="${username}"/>
 
 <div class="w3-container w3-center">
   <div class="w3-bar w3-padding-large w3-padding-24">

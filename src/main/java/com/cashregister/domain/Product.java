@@ -14,7 +14,7 @@ public class Product {
     private String text;
     private String tag;
 
-    private User author;
+//    private User author;
 
     public Product() {
     }
@@ -40,11 +40,11 @@ public class Product {
         return tag;
     }
 
-    public User getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+//    public User getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(User author) {
+//        this.author = author;
+//    }
 }

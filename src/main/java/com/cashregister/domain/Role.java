@@ -1,13 +1,16 @@
 package com.cashregister.domain;
 
-import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.GrantedAuthority;
 
-public enum Role implements GrantedAuthority {
-    USER;
+public enum Role {
+    VIZITOR,
+    CASHIER,
+    SENIOR_CASHIER,
+    MANAGER;
 
 
-    @Override
-    public String getAuthority() {
-        return name();
-    }
+//    @Override
+//    public String getAuthority() {
+//        return name();
+//    }
 }

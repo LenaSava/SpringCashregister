@@ -18,46 +18,38 @@
     <h1><fmt:message key="cash.register"/></h1>
 </div>
 
-
-
 <div class="w3-container w3-padding">
     <div class="w3-card-4">
         <jsp:include page="parts/header.jsp"></jsp:include>
         <jsp:include page="parts/menu.jsp"></jsp:include>
-
-
-
-
         <div class="w3-container w3-center w3-green">
             <h2>
-                <i><fmt:message key="product.list"/></i>
+                <i><fmt:message key="invoices.list"/></i>
             </h2>
             <table border="1" cellpadding="5" cellspacing="1" >
                 <tr>
-                    <th><fmt:message key="code"/></th>
-                    <th><fmt:message key="product.name"/></th>
+                    <th><fmt:message key="product.id"/></th>
                     <th><fmt:message key="price"/></th>
                     <th><fmt:message key="quantity"/></th>
+                    <th><fmt:message key="cashier.id"/></th>
                 </tr>
-                <c:forEach items="${products}" var="product" >
+                <c:forEach items="${invoices}" var="invoice" >
                     <tr>
-                        <td>${product.code}</td>
-                        <td>
-                            <c:out value="${language == 'ua'? product.name_ua: product.name}"/>
-                        </td>
-                        <td>${product.cost}</td>
-                        <td>${product.quantity}</td>
-                        <td><a href="/api/show_create?id=${product.id}"><fmt:message key="edit"/></a></td>
+                        <td>${invoice.product_id}</td>
+                        <td>${invoice.cost}</td>
+                        <td>1</td>
+                        <td>${invoice.userId}</td>
+                        <td><a href="/api/delete?id=${invoice.id}"><fmt:message key="delete"/></a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'"><fmt:message key="create.product"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/delete_all'"><fmt:message key="deleteAll"/></button>
+            <br>
         </div>
-        <%@ include file="parts/pagination.jsp" %>
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'"><fmt:message key="back.to.main"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'"><fmt:message key="back.to.user.menu"/></button>
 </div>
 
 <jsp:include page="parts/footer.jsp"></jsp:include>

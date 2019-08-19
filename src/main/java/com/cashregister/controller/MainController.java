@@ -22,12 +22,17 @@ public class MainController {
     public String greeting(Map<String, Object> model) {
         return "index";
     }
+
+
+
+
     @GetMapping("/main")
     public String main(Map<String, Object> model) {
         Iterable<Product> messages = productRepos.findAll();
         model.put("messages", messages);
         return "main";
     }
+
     @PostMapping("/main")
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model ) {
         Product product = new Product(text, tag);

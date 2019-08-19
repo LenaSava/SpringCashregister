@@ -18,46 +18,42 @@
     <h1><fmt:message key="cash.register"/></h1>
 </div>
 
-
-
 <div class="w3-container w3-padding">
     <div class="w3-card-4">
         <jsp:include page="parts/header.jsp"></jsp:include>
         <jsp:include page="parts/menu.jsp"></jsp:include>
-
-
-
-
         <div class="w3-container w3-center w3-green">
             <h2>
-                <i><fmt:message key="product.list"/></i>
+                <i><fmt:message key="bill.list"/></i>
             </h2>
             <table border="1" cellpadding="5" cellspacing="1" >
                 <tr>
-                    <th><fmt:message key="code"/></th>
-                    <th><fmt:message key="product.name"/></th>
-                    <th><fmt:message key="price"/></th>
-                    <th><fmt:message key="quantity"/></th>
+                    <th><fmt:message key="bill.id"/></th>
+                    <th><fmt:message key="date"/></th>
+                    <th><fmt:message key="status"/></th>
+                    <th><fmt:message key="cashier.id"/></th>
+                    <th><fmt:message key="total.cost"/></th>
                 </tr>
-                <c:forEach items="${products}" var="product" >
+                <c:forEach items="${bills}" var="bill" >
                     <tr>
-                        <td>${product.code}</td>
-                        <td>
-                            <c:out value="${language == 'ua'? product.name_ua: product.name}"/>
-                        </td>
-                        <td>${product.cost}</td>
-                        <td>${product.quantity}</td>
-                        <td><a href="/api/show_create?id=${product.id}"><fmt:message key="edit"/></a></td>
+                        <td>${bill.id}</td>
+                        <td>${bill.dates}</td>
+                        <td>${bill.status}</td>
+                        <td>${bill.userId}</td>
+                        <td>${bill.totalCost}</td>
+                        <td><a href="/api/confirm_bill?id=${bill.id}"><fmt:message key="confirm"/></a></td>
+                        <td><a href="/api/cancel_bill?id=${bill.id}"><fmt:message key="cancel"/></a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'"><fmt:message key="create.product"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/x_report'"><fmt:message key="x.report"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/y_report'"><fmt:message key="y.report"/></button>
+            <br>
         </div>
-        <%@ include file="parts/pagination.jsp" %>
     </div>
 </div>
 <div class="w3-container w3-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'"><fmt:message key="back.to.main"/></button>
+    <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/login'"><fmt:message key="back.to.user.menu"/></button>
 </div>
 
 <jsp:include page="parts/footer.jsp"></jsp:include>
