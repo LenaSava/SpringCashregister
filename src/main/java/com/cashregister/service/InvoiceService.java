@@ -18,8 +18,7 @@ public interface InvoiceService {
     boolean delete(Integer id);
 
 
-    Optional<Invoice> findById(int id);
-
+    public void findById(int id);
 
     void deleteAll();
 

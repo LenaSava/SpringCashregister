@@ -39,7 +39,7 @@
                         <td>${invoice.cost}</td>
                         <td>1</td>
                         <td>${invoice.userId.id}</td>
-                        <td><a href="/api/delete?id=${invoice.id}"><fmt:message key="delete"/></a></td>
+                        <td><a href="/delete?id=${invoice.id}"><fmt:message key="delete"/></a></td>
                     </tr>
                 </c:forEach>
             </table>

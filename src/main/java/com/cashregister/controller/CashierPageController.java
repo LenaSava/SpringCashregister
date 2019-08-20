@@ -48,7 +48,7 @@ public class CashierPageController {
     @GetMapping("/create_invoice")
     public String createInvoice(@RequestParam(name = "id") String id, Model model ) {
         Invoice invoice = new Invoice();
-        Optional<Product> service = productService.findById(Integer.parseInt(id));
+//        Optional<Product> service = productService.findById(Integer.parseInt(id));
 //        User user = request.getSession(true).getAttribute("User");
 //        Bill bill = billService.findOrCreate(user.());
 //

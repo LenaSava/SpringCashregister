@@ -36,8 +36,8 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
-    public Optional<Invoice> findById(int id) {
-        return Optional.empty();
+    public void findById(int id) {
+        invoiceRepo.deleteById(id);
     }
 
     @Override
