@@ -1,11 +1,7 @@
 package com.cashregister.domain;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
-import lombok.AllArgsConstructor;
+import com.cashregister.domain.type.Role;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
 
@@ -25,13 +21,14 @@ public class User {
     private String username;
     @Column(name="password")
     private String password;
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
 
-    public User(String username, String password) {
+    public User(String username, String password, Role role) {
         this.username = username;
         this.password = password;
+        this.role = role;
     }
-
-    private Role role;
 
     public Long getId() {
         return id;

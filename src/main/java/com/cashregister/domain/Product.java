@@ -8,18 +8,26 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private Integer id;
+
     @Column(name="code")
     private Integer code;
+
     @Column(name="name_En")
     private String name_En;
+
     @Column(name="name_ua")
     private String name_ua;
+
     @Column(name="cost")
     private Double cost;
+
     @Column(name="quantity")
     private Integer quantity;
-//    @Column(name="invoiceId")
-//    private Integer invoiceId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "invoice_id")
+    private Invoice invoiceId;
+
 //    @Column(name="invoice")
 //    private Invoice invoice;
 
@@ -98,5 +106,5 @@ public class Product {
 //
 //    public void setInvoice(Invoice invoice) {
 //        this.invoice = invoice;
-    }
+}
 //}

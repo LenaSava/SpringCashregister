@@ -1,5 +1,6 @@
 package com.cashregister.domain;
 
+import com.cashregister.domain.type.BillStatus;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,8 +20,9 @@ public class Bill {
     private Date dates;
     @Column(name="status")
     private BillStatus status;
-    @Column(name="userId")
-    private Integer userId;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User userId;
 
     public Integer getId() {
         return id;
@@ -54,11 +56,11 @@ public class Bill {
         this.status = status;
     }
 
-    public Integer getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 

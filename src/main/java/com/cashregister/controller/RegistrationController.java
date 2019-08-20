@@ -1,7 +1,6 @@
 package com.cashregister.controller;
 
-
-import com.cashregister.domain.Role;
+import com.cashregister.domain.type.Role;
 import com.cashregister.repos.UserRepo;
 
 import com.cashregister.domain.User;
@@ -29,7 +28,7 @@ public class RegistrationController {
     public String addUser(User user, Map<String, Object> model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 //        User userFromDb = userRepo.findByUsername((String) model.get("username"));
-        User user2 = new User((String) model.get("username"), (String) model.get("password"));
+ //       User user2 = new User((String) model.get("username"), (String) model.get("password"));
 
         if (userFromDb != null) {
             model.put("message", "User exists!");

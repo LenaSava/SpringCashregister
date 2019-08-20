@@ -23,24 +23,27 @@ public class Invoice {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "userId")
-    private Integer userId;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User userId;
 
-    @Column(name = "userRoleId")
-    private Integer userRoleId;
+//    @OneToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "user_role_id")
+//    private Role userRoleId;
 
-    @Column(name = "billId")
-    private Integer billId;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "bill_id")
+    private Bill billId;
 
     public Invoice() {
     }
 
-    public Invoice(Integer product_id, Double cost, Integer quantity, Integer userId, Integer userRoleId, Integer billId) {
+    public Invoice(Integer product_id, Double cost, Integer quantity, User userId, Bill billId) {
         this.product_id = product_id;
         this.cost = cost;
         this.quantity = quantity;
         this.userId = userId;
-        this.userRoleId = userRoleId;
+//        this.userRoleId = userRoleId;
         this.billId = billId;
     }
 
@@ -76,28 +79,20 @@ public class Invoice {
         this.quantity = quantity;
     }
 
-    public Integer getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
-    public Integer getUserRoleId() {
-        return userRoleId;
-    }
 
-    public void setUserRoleId(Integer userRoleId) {
-        this.userRoleId = userRoleId;
-    }
-
-    public Integer getBillId() {
+    public Bill getBillId() {
         return billId;
     }
 
-    public void setBillId(Integer billId) {
+    public void setBillId(Bill billId) {
         this.billId = billId;
     }
 }
-
