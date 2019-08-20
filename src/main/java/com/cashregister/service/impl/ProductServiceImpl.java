@@ -40,8 +40,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Optional<Product> findByCode(int code) {
-        return Optional.empty();
+    public List<Product> findByCode(int code) {
+        try {
+            List<Product> product = productRepo.findByCode(code);
+            return product;
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot Products findByCode");
+            throw new ServiceException(errorMessage);
+        }
     }
 
     @Override

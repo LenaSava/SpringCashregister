@@ -38,7 +38,7 @@
                         <td>${invoice.product_id}</td>
                         <td>${invoice.cost}</td>
                         <td>1</td>
-                        <td>${invoice.userId}</td>
+                        <td>${invoice.userId.id}</td>
                         <td><a href="/api/delete?id=${invoice.id}"><fmt:message key="delete"/></a></td>
                     </tr>
                 </c:forEach>

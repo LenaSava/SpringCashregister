@@ -42,16 +42,17 @@
                 <c:forEach items="${products}" var="product" >
                     <tr>
                         <td>${product.code}</td>
-                        <td>
-                            <c:out value="${language == 'ua'? product.name_ua: product.name}"/>
-                        </td>
+                        <td>${product.name_En}</td>
+<%--                        <td>--%>
+<%--                            <c:out value="${language == 'ua'? product.name_ua: product.name}"/>--%>
+<%--                        </td>--%>
                         <td>${product.cost}</td>
                         <td>${product.quantity}</td>
                         <td><a href="/show_create?id=${product.id}"><fmt:message key="edit"/></a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/show_create'"><fmt:message key="create.product"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/show_create'"><fmt:message key="create.product"/></button>
         </div>
         <%@ include file="parts/pagination.jsp" %>
     </div>

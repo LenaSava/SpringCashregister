@@ -3,6 +3,7 @@ package com.cashregister.service.impl;
 import com.cashregister.domain.Bill;
 import com.cashregister.repos.BillRepo;
 import com.cashregister.service.BillService;
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,16 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public Bill findOrCreate(int userId) {
+//        Bill bill = new Bill();
+//        if ( billRepo.findById(userId) != null ) {
+//            billRepo.save()
+       // }
+//        try {
+////            return billRepo.findOrCreate(userId);
+//        } catch (RuntimeException e) {
+//            String errorMessage = String.format("cannot findOrCreate bill");
+//            throw new ServiceException(errorMessage);
+//        }
         return null;
     }
 

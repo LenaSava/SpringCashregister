@@ -1,7 +1,9 @@
 package com.cashregister.controller;
 
+import com.cashregister.domain.Invoice;
 import com.cashregister.domain.Product;
 import com.cashregister.repos.ProductRepos;
+import com.cashregister.service.InvoiceService;
 import com.cashregister.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +15,10 @@ import java.util.Map;
 
 @Controller
 public class MenuPageController {
-
     @Autowired
     private ProductService productService;
+    @Autowired
+    private InvoiceService invoiceService;
 
     @GetMapping("/cashier_page")
     public String cashierPage(Map<String, Object> model) {
@@ -26,13 +29,16 @@ public class MenuPageController {
 
     @GetMapping("/senior_cashier_list")
     public String seniorCashierPage(Map<String, Object> model) {
-
+        List<Invoice> invoices = invoiceService.getAllInvoices();
+        model.put("invoices", invoices);
+        System.out.println(invoices);
         return "seniorCashier";
     }
 
     @GetMapping("/manager_page")
     public String managerPage(Map<String, Object> model) {
-
+        List<Product> products = productService.getAllProducts();
+        model.put("products", products);
         return "manager";
     }
 

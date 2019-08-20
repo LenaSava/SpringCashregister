@@ -43,7 +43,7 @@
                         <td>${product.code}</td>
                         <td>${product.name_En}</td>
 <%--                        <td>--%>
-<%--                            <c:out value="${language == 'ua'? product.name_ua: product.name}"/>--%>
+<%--                            <c:out value="${language == 'ua'? product.name_ua: product.name_ua}"/>--%>
 <%--                        </td>--%>
                         <td>1</td>
                         <td>${product.cost}</td>
