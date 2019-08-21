@@ -1,9 +1,8 @@
 package com.cashregister.service.impl;
 
 import com.cashregister.domain.Bill;
-import com.cashregister.repos.BillRepo;
+import com.cashregister.repository.BillRepo;
 import com.cashregister.service.BillService;
-import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,7 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public List<Bill> getAllBills() {
-        return null;
+        return (List<Bill>) billRepo.findAll();
     }
 
     @Override
@@ -37,7 +36,7 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public void confirm(Integer id) {
-
+ //       billRepo.confirm(id);
     }
 
     @Override

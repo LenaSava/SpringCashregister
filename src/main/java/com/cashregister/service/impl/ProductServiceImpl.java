@@ -1,7 +1,7 @@
 package com.cashregister.service.impl;
 
 import com.cashregister.domain.Product;
-import com.cashregister.repos.ProductRepos;
+import com.cashregister.repository.ProductRepos;
 import com.cashregister.service.ProductService;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -22,7 +22,15 @@ public class SeniorCashierPageController {
 
     @GetMapping("/delete")
     public String deleteById(@RequestParam(name = "id") String id, Model model) {
-        invoiceService.findById(Integer.parseInt(id));
+        invoiceService.delete(Integer.parseInt(id));
+        List<Invoice> invoices = invoiceService.getAllInvoices();
+        model.addAttribute("invoices", invoices);
+        return "seniorCashier";
+    }
+
+    @GetMapping("/delete_all")
+    public String deleteAll(Model model) {
+        invoiceService.deleteAll();
         List<Invoice> invoices = invoiceService.getAllInvoices();
         model.addAttribute("invoices", invoices);
         return "seniorCashier";

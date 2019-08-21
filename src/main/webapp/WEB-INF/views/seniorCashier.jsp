@@ -43,7 +43,7 @@
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/api/delete_all'"><fmt:message key="deleteAll"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/delete_all'"><fmt:message key="deleteAll"/></button>
             <br>
         </div>
     </div>

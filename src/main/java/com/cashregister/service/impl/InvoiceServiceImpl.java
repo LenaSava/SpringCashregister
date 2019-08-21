@@ -1,13 +1,12 @@
 package com.cashregister.service.impl;
 
 import com.cashregister.domain.Invoice;
-import com.cashregister.repos.InvoiceRepo;
+import com.cashregister.repository.InvoiceRepo;
 import com.cashregister.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
@@ -22,26 +21,27 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public void create(Invoice invoice) {
-
+        invoiceRepo.save(invoice);
     }
 
     @Override
     public void update(Invoice invoice) {
-
+        invoiceRepo.save(invoice);
     }
 
     @Override
-    public boolean delete(Integer id) {
-        return false;
-    }
-
-    @Override
-    public void findById(int id) {
+    public void delete(Integer id) {
         invoiceRepo.deleteById(id);
     }
 
     @Override
+    public void findById(int id) {
+        invoiceRepo.findById(id);
+    }
+
+    @Override
     public void deleteAll() {
+        invoiceRepo.deleteAll();
 
     }
 }

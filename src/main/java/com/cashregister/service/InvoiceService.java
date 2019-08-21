@@ -15,7 +15,7 @@ public interface InvoiceService {
     void update(Invoice invoice);
 
 
-    boolean delete(Integer id);
+    void delete(Integer id);
 
 
     public void findById(int id);

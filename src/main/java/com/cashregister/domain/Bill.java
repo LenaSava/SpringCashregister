@@ -1,10 +1,12 @@
 package com.cashregister.domain;
 
 import com.cashregister.domain.type.BillStatus;
+import com.cashregister.domain.type.Role;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @Entity
@@ -18,8 +20,10 @@ public class Bill {
     private Integer totalCost;
     @Column(name="dates")
     private Date dates;
-    @Column(name="status")
-    private BillStatus status;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
+    @CollectionTable(name = "bill_status", joinColumns = @JoinColumn(name = "bill_id"))
+    @Enumerated(value = EnumType.STRING)
+    private Set<BillStatus> status;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User userId;
@@ -48,11 +52,11 @@ public class Bill {
         this.dates = dates;
     }
 
-    public BillStatus getStatus() {
+    public Set<BillStatus> getStatus() {
         return status;
     }
 
-    public void setStatus(BillStatus status) {
+    public void setStatus(Set<BillStatus> status) {
         this.status = status;
     }
 

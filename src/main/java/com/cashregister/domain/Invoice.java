@@ -23,7 +23,7 @@ public class Invoice {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User userId;
 
@@ -31,7 +31,7 @@ public class Invoice {
 //    @JoinColumn(name = "user_role_id")
 //    private Role userRoleId;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bill_id")
     private Bill billId;
 

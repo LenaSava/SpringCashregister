@@ -1,17 +1,17 @@
 package com.cashregister.service;
 
-import com.cashregister.repos.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.cashregister.domain.User;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 public interface UserService {
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        return userRepo.findByUsername(username);
-//    }
+    List<User> getAllUser();
+
+//    UserDetails loadUserByUsername(String username);
+
 }

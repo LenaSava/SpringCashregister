@@ -1,4 +1,4 @@
-package com.cashregister.repos;
+package com.cashregister.repository;
 
 import com.cashregister.domain.Invoice;
 import org.springframework.data.jpa.repository.JpaRepository;

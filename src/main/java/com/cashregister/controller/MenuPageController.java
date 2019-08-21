@@ -1,14 +1,14 @@
 package com.cashregister.controller;
 
+import com.cashregister.domain.Bill;
 import com.cashregister.domain.Invoice;
 import com.cashregister.domain.Product;
-import com.cashregister.repos.ProductRepos;
+import com.cashregister.service.BillService;
 import com.cashregister.service.InvoiceService;
 import com.cashregister.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Map;
@@ -19,6 +19,9 @@ public class MenuPageController {
     private ProductService productService;
     @Autowired
     private InvoiceService invoiceService;
+    @Autowired
+    private BillService billService;
+
 
     @GetMapping("/cashier_page")
     public String cashierPage(Map<String, Object> model) {
@@ -44,7 +47,8 @@ public class MenuPageController {
 
     @GetMapping("/bills_page")
     public String billsPage(Map<String, Object> model) {
-
+        List<Bill> bills = billService.getAllBills();
+        model.put("bills", bills);
         return "billsPage";
     }
 

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="language" value="${not empty sessionScope.language ? sessionScope.language : \"en\"}"
        scope="session"/>
@@ -23,15 +24,19 @@
         <div class="w3-container w3-center w3-green">
             <h2><fmt:message key="registration.title"/></h2>
         </div>
-        <form action="/registration" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <form:form action="/registration" method="post" class="w3-selection w3-light-grey w3-padding">
+            <label><fmt:message key="registration.button"/>
+                <input type="text" required placeholder="<fmt:message key="example.steve"/>" name="username" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+            </label>
+            <label><fmt:message key="password.input"/>
+                <input type="password" required placeholder="<fmt:message key="password"/>" name="password" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+            </label>
             <button type="submit" class="w3-btn w3-green w3-round-large w3-margin-bottom"><fmt:message key="submit"/></button>
-        </form>
+        </form:form>
+
 
         <div>
-            <c:if test="${not empty error}">
+            <c:if test="${not empty message}">
                 <div class="w3-red"><fmt:message key="registration.exception"/></div>
             </c:if>
         </div>

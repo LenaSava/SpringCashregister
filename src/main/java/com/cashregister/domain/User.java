@@ -6,12 +6,12 @@ import lombok.Data;
 //import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Data
 @Entity
 @Table(name = "usr")
-@DiscriminatorColumn(name = "role_id")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,12 +21,14 @@ public class User {
     private String username;
     @Column(name="password")
     private String password;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(value = EnumType.STRING)
-    private Role role;
+    private Set<Role> role;
 
     public User() {}
 
-    public User(String username, String password, Role role) {
+    public User(String username, String password, Set<Role> role) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -56,16 +58,15 @@ public class User {
         this.password = password;
     }
 
-
-    public Role getRole() {
+    public Set<Role> getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(Set<Role> role) {
         this.role = role;
     }
 
-//    @Override
+    //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {
 //        return getRoles();
 //    }
