@@ -26,17 +26,23 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void create(Product product) {
- //       productRepo.create(product);
+        productRepo.save(product);
     }
 
     @Override
     public void update(Product product) {
-
+        productRepo.save(product);
     }
 
     @Override
     public Optional<Product> findById(int id) {
-        return Optional.empty();
+        try {
+            Optional<Product> product = productRepo.findById(id);
+            return product;
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot Products findByCode");
+            throw new ServiceException(errorMessage);
+        }
     }
 
     @Override
@@ -75,6 +81,7 @@ public class ProductServiceImpl implements ProductService {
         product.setCost(cost);
         product.setQuantity(quantity);
 
+        System.out.println(product);
         return product;
     }
 }

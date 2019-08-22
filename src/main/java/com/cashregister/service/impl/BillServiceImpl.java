@@ -21,16 +21,7 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public Bill findOrCreate(int userId) {
-//        Bill bill = new Bill();
-//        if ( billRepo.findById(userId) != null ) {
-//            billRepo.save()
-       // }
-//        try {
-////            return billRepo.findOrCreate(userId);
-//        } catch (RuntimeException e) {
-//            String errorMessage = String.format("cannot findOrCreate bill");
-//            throw new ServiceException(errorMessage);
-//        }
+
         return null;
     }
 
@@ -46,6 +37,6 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public List<Bill> Report(String status) {
-        return null;
+        return (List<Bill>) billRepo.findAll();
     }
 }

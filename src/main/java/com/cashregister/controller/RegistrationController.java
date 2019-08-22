@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @Controller
 public class RegistrationController {
+    private static final Logger logger = Logger.getLogger(String.valueOf(RegistrationController.class));
     @Autowired
     private UserRepo userRepo;
 

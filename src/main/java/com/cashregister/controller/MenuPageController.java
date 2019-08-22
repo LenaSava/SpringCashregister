@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @Controller
 public class MenuPageController {
+    private static final Logger logger = Logger.getLogger(String.valueOf(MenuPageController.class));
     @Autowired
     private ProductService productService;
     @Autowired

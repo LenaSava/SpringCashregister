@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProductRepos extends JpaRepository<Product, Integer> {
@@ -13,6 +14,8 @@ public interface ProductRepos extends JpaRepository<Product, Integer> {
     List<Product> findAll();
 
     List<Product> findByCode(int code);
+
+    Optional<Product> findById(int id);
 
 //    Void create(Product product);
 }

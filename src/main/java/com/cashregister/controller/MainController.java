@@ -20,11 +20,6 @@ public class MainController {
         return "index";
     }
 
-//    @GetMapping("/login")
-//    public String login(Map<String, Object> model) {
-//        return "login";
-//    }
-
     @PostMapping("filter")
     public String filter(@RequestParam String filter, Map<String, Object> model ) {
 

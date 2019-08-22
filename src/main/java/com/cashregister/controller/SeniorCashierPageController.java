@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Map;
+import java.util.logging.Logger;
 
 @Controller
 public class SeniorCashierPageController {
+    private static final Logger logger = Logger.getLogger(String.valueOf(SeniorCashierPageController.class));
     @Autowired
     private ProductService productService;
     @Autowired

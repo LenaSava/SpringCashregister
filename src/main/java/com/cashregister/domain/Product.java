@@ -1,6 +1,7 @@
 package com.cashregister.domain;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 public class Product {
@@ -43,6 +44,7 @@ public class Product {
         this.quantity = quantity;
 
     }
+
 
     public Integer getId() {
         return id;

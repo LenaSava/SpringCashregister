@@ -4,15 +4,17 @@ package com.cashregister.controller;
 import com.cashregister.domain.Bill;
 import com.cashregister.domain.Invoice;
 import com.cashregister.domain.Product;
+import com.cashregister.domain.User;
 import com.cashregister.service.BillService;
 import com.cashregister.service.InvoiceService;
 import com.cashregister.service.ProductService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
@@ -38,6 +40,7 @@ public class CashierPageController {
             products =productService.findByCode(Integer.parseInt(search));
         } else {
             products = productService.getAllProducts();
+            System.out.println(products);
         }
         model.addAttribute("products" , products);
         System.out.println(products);
@@ -48,16 +51,18 @@ public class CashierPageController {
     @GetMapping("/create_invoice")
     public String createInvoice(@RequestParam(name = "id") String id, Model model ) {
         Invoice invoice = new Invoice();
-//        Optional<Product> service = productService.findById(Integer.parseInt(id));
-//        User user = request.getSession(true).getAttribute("User");
-//        Bill bill = billService.findOrCreate(user.());
-//
-//        invoice.setProduct_id(service.get().getId());
-//        invoice.setCost(service.get().getCost());
-//        invoice.setQuantity(service.get().getQuantity());
-//        invoice.setUserId(user.getId());
-//        invoice.setUserRoleId(user.getRole());
-//        invoice.setBillId(bill.getId());
+
+//        Product product = new Product(productService.findById(Integer.parseInt(id)));
+        Optional<Product> product = productService.findById(Integer.parseInt(id));
+        Bill bill = billService.findOrCreate(Integer.parseInt(id));
+        invoice.setBillId(bill);
+        invoice.setCost(50.0);
+        invoice.setProduct_id(101);
+        invoice.setQuantity(1);
+ //       invoice.setUserId(invoice.setUserId(user));
+        System.out.println(product);
+        System.out.println(invoice);
+
 
 
         invoiceService.create(invoice);
