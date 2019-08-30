@@ -3,6 +3,7 @@ package com.cashregister.service.impl;
 import com.cashregister.domain.User;
 import com.cashregister.repository.UserRepo;
 import com.cashregister.service.UserService;
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +20,13 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> getAllUser() {
-        return userRepo.findAll();
-    }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        return userRepo.findByUsername(username);
-//    }
+        try {
+            return userRepo.findAll();
+        } catch (RuntimeException e) {
+            String errorMessage = String.format("cannot find users");
+            throw new ServiceException(errorMessage);
+        }
+
+    }
 }

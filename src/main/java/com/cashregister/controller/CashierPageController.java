@@ -8,14 +8,12 @@ import com.cashregister.domain.User;
 import com.cashregister.service.BillService;
 import com.cashregister.service.InvoiceService;
 import com.cashregister.service.ProductService;
+import com.mysql.cj.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,17 +47,17 @@ public class CashierPageController {
     }
 
     @GetMapping("/create_invoice")
-    public String createInvoice(@RequestParam(name = "id") String id, Model model ) {
+    public String createInvoice(@RequestParam(name = "id") String id,
+                                @RequestAttribute(name="User") User user, Model model ) {
         Invoice invoice = new Invoice();
 
-//        Product product = new Product(productService.findById(Integer.parseInt(id)));
         Optional<Product> product = productService.findById(Integer.parseInt(id));
         Bill bill = billService.findOrCreate(Integer.parseInt(id));
         invoice.setBillId(bill);
-        invoice.setCost(50.0);
-        invoice.setProduct_id(101);
-        invoice.setQuantity(1);
- //       invoice.setUserId(invoice.setUserId(user));
+        invoice.setCost(product.get().getCost());
+        invoice.setProduct_id(product.get().getId());
+        invoice.setQuantity(product.get().getQuantity());
+ //       invoice.setUserId(user);
         System.out.println(product);
         System.out.println(invoice);
 

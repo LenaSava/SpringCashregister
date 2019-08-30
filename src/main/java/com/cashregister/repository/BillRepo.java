@@ -10,8 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface BillRepo extends CrudRepository<Bill, Integer> {
 
 
-////    Bill createAndGet(Bill entity);
-//    @Query("UPDATE bill set status=CONFIRM  where id=3")
-//    void confirm(Integer id);
-
 }

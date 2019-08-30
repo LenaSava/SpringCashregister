@@ -63,6 +63,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public int getNumberOfproducts() {
+//        return productRepo.getNumberOfproducts();
         return 0;
     }
 
