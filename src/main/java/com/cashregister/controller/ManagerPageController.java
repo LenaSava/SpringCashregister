@@ -3,6 +3,7 @@ package com.cashregister.controller;
 import com.cashregister.domain.Product;
 import com.cashregister.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 import static org.eclipse.jdt.internal.compiler.problem.ProblemSeverities.Optional;
 
 @Controller
+@PreAuthorize("hasAuthority('MANAGER')")
 public class ManagerPageController {
     private static final Logger logger = Logger.getLogger(String.valueOf(ManagerPageController.class));
 

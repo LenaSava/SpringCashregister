@@ -22,6 +22,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 @Controller
+@PreAuthorize("hasAuthority('CASHIER')")
 public class CashierPageController {
     private static final Logger logger = Logger.getLogger(String.valueOf(CashierPageController.class));
     @Autowired
@@ -47,8 +48,8 @@ public class CashierPageController {
     }
 
     @GetMapping("/create_invoice")
-    public String createInvoice(@RequestParam(name = "id") String id,
-                                @RequestAttribute(name="User") User user, Model model ) {
+    public String createInvoice(@PathVariable User user,
+            @RequestParam(name = "id") String id, Model model ) {
         Invoice invoice = new Invoice();
 
         Optional<Product> product = productService.findById(Integer.parseInt(id));
