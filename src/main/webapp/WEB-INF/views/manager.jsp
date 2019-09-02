@@ -48,7 +48,7 @@
 <%--                        </td>--%>
                         <td>${product.cost}</td>
                         <td>${product.quantity}</td>
-                        <td><a href="/show_create?id=${product.id}"><fmt:message key="edit"/></a></td>
+                        <td><a href="/edit?id=${product.id}"><fmt:message key="edit"/></a></td>
                     </tr>
                 </c:forEach>
             </table>

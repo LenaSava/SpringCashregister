@@ -94,19 +94,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-//    public Integer getInvoiceId() {
-//        return invoiceId;
-//    }
-//
-//    public void setInvoiceId(Integer invoiceId) {
-//        this.invoiceId = invoiceId;
-//    }
-//
-//    public Invoice getInvoice() {
-//        return invoice;
-//    }
-//
-//    public void setInvoice(Invoice invoice) {
-//        this.invoice = invoice;
+    public Invoice getInvoiceId() {
+        return invoiceId;
+    }
+
+    public void setInvoiceId(Invoice invoiceId) {
+        this.invoiceId = invoiceId;
+    }
 }
-//}

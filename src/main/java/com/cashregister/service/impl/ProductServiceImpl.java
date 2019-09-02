@@ -1,7 +1,7 @@
 package com.cashregister.service.impl;
 
 import com.cashregister.domain.Product;
-import com.cashregister.repository.ProductRepos;
+import com.cashregister.repository.ProductRepo;
 import com.cashregister.service.ProductService;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +13,11 @@ import java.util.Optional;
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
-    private ProductRepos productRepo;
+    private ProductRepo productRepo;
+    @Autowired
+    private ProductService productService;
 
-    public ProductServiceImpl(ProductRepos productRepo) {
+    public ProductServiceImpl(ProductRepo productRepo) {
         this.productRepo = productRepo;
     }
 
@@ -30,9 +32,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(Product product) {
-        productRepo.save(product);
+    public void update(int toUpdate, Product product) {
+        Product updated = productService.findById(toUpdate).get();
+//        Product updated2 = updated.get();
+        updated.setCost(product.getCost());
+        updated.setName_En(product.getName_En());
+        updated.setName_ua(product.getName_ua());
+        updated.setCost(product.getCost());
+        updated.setQuantity(product.getQuantity());
+
+        productRepo.save(updated);
+        System.out.println(updated);
     }
+
 
     @Override
     public Optional<Product> findById(int id) {
@@ -40,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
             Optional<Product> product = productRepo.findById(id);
             return product;
         } catch (RuntimeException e) {
-            String errorMessage = String.format("cannot Products findByCode");
+            String errorMessage = String.format("cannot Products findById");
             throw new ServiceException(errorMessage);
         }
     }
@@ -73,14 +85,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProduct(int code, String name, String name_ua, Double cost, Integer quantity) {
+    public Product getProduct(int code, String name, String name_ua, Double cost, Integer quantity, Integer invoiceId) {
         Product product = new Product();
+
 
         product.setCode(code);
         product.setName_En(name);
         product.setName_ua(name_ua);
         product.setCost(cost);
         product.setQuantity(quantity);
+//        product.setInvoiceId(findById(invoiceId));
 
         System.out.println(product);
         return product;

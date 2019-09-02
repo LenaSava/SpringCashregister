@@ -23,14 +23,14 @@
         <div class="w3-container w3-center w3-green">
                 <h2><fmt:message key="update.create"/></h2>
         </div>
-        <form method="post" action="/update" class="w3-selection w3-light-grey w3-padding">
+        <form method="post" action="/updateFromView" class="w3-selection w3-light-grey w3-padding">
             <input type="hidden" name="id" value="${product.id}"/>
             <input type="hidden" name="id" value="${product.invoiceId}"/>
             <label><fmt:message key="code"/>
                 <input type="number" required name ="code" maxlength="3" value="${product.code}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label><fmt:message key="product.name"/>
-                <input type="text" pattern="^[A-Z][a-z]{1,20}$" required name="name" maxlength="50" value="${product.name}"  class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
+                <input type="text" pattern="^[A-Z][a-z]{1,20}$" required name="name" maxlength="50" value="${product.name_En}"  class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />
             </label>
             <label><fmt:message key="product.name.ua"/>
                 <input type="text" pattern="^[А-Яа-яёЁЇїІіЄєҐґ]+$" required name="name_ua" maxlength="50" value="${product.name_ua}" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%"><br />

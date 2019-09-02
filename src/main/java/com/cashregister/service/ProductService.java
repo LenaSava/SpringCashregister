@@ -14,7 +14,8 @@ public interface ProductService {
     void create(Product product);
 
 
-    void update(Product product);
+    void update(int toUpdate, Product product);
+
 
 
     Optional<Product> findById(int id);
@@ -29,6 +30,6 @@ public interface ProductService {
 
     List<Product> findProducts(int currentPage, int rowsPerPage);
 
-    Product getProduct(int code, String name, String name_ua, Double cost, Integer quantity);
+    Product getProduct(int code, String name, String name_ua, Double cost, Integer quantity, Integer invoiceId);
 
 }
