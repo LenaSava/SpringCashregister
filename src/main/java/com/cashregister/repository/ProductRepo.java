@@ -16,10 +16,5 @@ public interface ProductRepo extends JpaRepository<Product, Integer> {
 
     List<Product> findByCode(int code);
 
-//    List<Product> findById(int id);
-//    Optional<Product> findById(int id);
-
-//    @Query("SELECT COUNT(id) FROM products")
-//    public int getNumberOfproducts();
 
 }
