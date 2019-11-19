@@ -17,7 +17,6 @@ import java.util.logging.Logger;
 import static org.eclipse.jdt.internal.compiler.problem.ProblemSeverities.Optional;
 
 @Controller
-@PreAuthorize("hasAuthority('MANAGER')")
 public class ManagerPageController {
     private static final Logger logger = Logger.getLogger(String.valueOf(ManagerPageController.class));
 

@@ -37,7 +37,7 @@ public class RegistrationController {
             return "registration";
         }
 
-        user.setRole(Collections.singleton(Role.CAHIER));
+        user.setRole(Role.CAHIER);
         userRepo.save(user);
 
 

@@ -28,7 +28,7 @@ public class WebSecurityConfig
         http
                 .authorizeRequests()
                     .antMatchers("/", "/registration","/parts/**").permitAll()
-                    .anyRequest().authenticated()
+                .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/login")
@@ -43,7 +43,7 @@ public class WebSecurityConfig
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance())
-                .usersByUsernameQuery("select   username, password, true from usr where username=?")
-                .authoritiesByUsernameQuery("select u.username, ur.role from usr u inner join user_role ur on u.id = ur.user_id where u.username=?");
+                .usersByUsernameQuery("select username, password, true from usr where username=?")
+                .authoritiesByUsernameQuery("select username, role from usr where username=?");
     }
 }
