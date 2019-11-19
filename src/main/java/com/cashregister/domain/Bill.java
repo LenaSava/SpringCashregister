@@ -20,7 +20,7 @@ public class Bill {
     private Integer totalCost;
     @Column(name="dates")
     private Date dates;
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.LAZY)
+    @ElementCollection(targetClass = BillStatus.class, fetch = FetchType.LAZY)
     @CollectionTable(name = "bill_status", joinColumns = @JoinColumn(name = "bill_id"))
     @Enumerated(value = EnumType.STRING)
     private Set<BillStatus> status;
@@ -78,4 +78,5 @@ public class Bill {
                 ", userId=" + userId +
                 '}';
     }
+
 }

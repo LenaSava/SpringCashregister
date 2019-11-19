@@ -1,12 +1,15 @@
 package com.cashregister.service.impl;
 
 import com.cashregister.domain.Bill;
+import com.cashregister.domain.type.BillStatus;
 import com.cashregister.repository.BillRepo;
 import com.cashregister.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BillServiceImpl implements BillService {
@@ -27,12 +30,16 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public void confirm(Integer id) {
- //       billRepo.confirm(id);
+       Bill billa = billRepo.findById(id).get();
+       billa.setStatus(Collections.singleton(BillStatus.CONFIRM));
+       billRepo.save(billa);
     }
 
     @Override
     public void cancel(Integer id) {
-
+        Bill billa = billRepo.findById(id).get();
+        billa.setStatus(Collections.singleton(BillStatus.CANCEL));
+        billRepo.save(billa);
     }
 
     @Override
