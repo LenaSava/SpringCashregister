@@ -2,6 +2,7 @@ package com.cashregister.service;
 
 
 import com.cashregister.domain.Bill;
+import com.cashregister.domain.type.BillStatus;
 
 import java.util.List;
 
@@ -18,9 +19,10 @@ public interface BillService {
 
     void cancel(Integer id);
 
-    List<Bill> Report(String status);
 
     void create(Bill bill);
+
+    List<Bill> Report(BillStatus status);
 
 }
 

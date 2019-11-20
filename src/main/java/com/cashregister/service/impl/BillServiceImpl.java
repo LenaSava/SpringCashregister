@@ -47,9 +47,11 @@ public class BillServiceImpl implements BillService {
         billRepo.save(billa);
     }
 
+
     @Override
-    public List<Bill> Report(String status) {
-        return (List<Bill>) billRepo.findAll();
+    public List<Bill> Report(BillStatus status) {
+        List<Bill> list =  billRepo.findBillByStatus(status);
+        return list;
     }
 
     @Override

@@ -31,12 +31,12 @@
                     <th><fmt:message key="status"/></th>
                     <th><fmt:message key="cashier.id"/></th>
                 </tr>
-                <c:forEach items="${bills}" var="bill" >
+                <c:forEach items="${bills}" var="bills" >
                     <tr>
-                        <td>${bill.totalCost}</td>
-                        <td>${bill.dates}</td>
-                        <td>${bill.status}</td>
-                        <td>${bill.userId}</td>
+                        <td>${bills.totalCost}</td>
+                        <td>${bills.dates}</td>
+                        <td>${bills.status}</td>
+                        <td>${bills.userId}</td>
                     </tr>
                 </c:forEach>
             </table>

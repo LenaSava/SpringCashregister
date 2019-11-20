@@ -25,13 +25,15 @@ public class BillsPageController {
 
     @GetMapping("/x_report")
     public String xReport(Model model) {
-        List<Bill> bills = billService.Report(BillStatus.CANCEL.name());
+        List<Bill> bills = billService.Report(BillStatus.CANCEL);
+        model.addAttribute("bills", bills);
         return "xReport";
     }
 
     @GetMapping("/y_report")
     public String yReport(Model model) {
-        List<Bill> bills = billService.Report(BillStatus.CONFIRM.name());
+        List<Bill> bills = billService.Report(BillStatus.CONFIRM);
+        model.addAttribute("bills", bills);
         return "yReport";
     }
 
