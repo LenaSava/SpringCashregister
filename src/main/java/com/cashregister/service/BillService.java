@@ -9,7 +9,9 @@ public interface BillService {
 
     List<Bill> getAllBills();
 
-    Bill findOrCreate(int userId);
+    Iterable<Bill> findOrCreate(int userId);
+
+    Bill findById(int id);
 
     void confirm(Integer id);
 
@@ -17,6 +19,8 @@ public interface BillService {
     void cancel(Integer id);
 
     List<Bill> Report(String status);
+
+    void create(Bill bill);
 
 }
 

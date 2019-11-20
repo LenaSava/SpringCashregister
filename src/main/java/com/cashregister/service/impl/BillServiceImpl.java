@@ -23,27 +23,37 @@ public class BillServiceImpl implements BillService {
     }
 
     @Override
-    public Bill findOrCreate(int userId) {
+    public Iterable<Bill> findOrCreate(int userId) {
 
-        return null;
+        return billRepo.findAllById(Collections.singleton(1));
+    }
+
+    @Override
+    public Bill findById(int id){
+        return billRepo.findAllById(id);
     }
 
     @Override
     public void confirm(Integer id) {
        Bill billa = billRepo.findById(id).get();
-       billa.setStatus(Collections.singleton(BillStatus.CONFIRM));
+       billa.setStatus(BillStatus.CONFIRM);
        billRepo.save(billa);
     }
 
     @Override
     public void cancel(Integer id) {
         Bill billa = billRepo.findById(id).get();
-        billa.setStatus(Collections.singleton(BillStatus.CANCEL));
+        billa.setStatus(BillStatus.CANCEL);
         billRepo.save(billa);
     }
 
     @Override
     public List<Bill> Report(String status) {
         return (List<Bill>) billRepo.findAll();
+    }
+
+    @Override
+    public void create(Bill bill) {
+        billRepo.save(bill);
     }
 }

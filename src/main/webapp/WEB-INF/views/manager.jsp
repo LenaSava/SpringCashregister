@@ -48,11 +48,11 @@
 <%--                        </td>--%>
                         <td>${product.cost}</td>
                         <td>${product.quantity}</td>
-                        <td><a href="/edit?id=${product.id}"><fmt:message key="edit"/></a></td>
+                        <td><a href="/managerPage/edit?id=${product.id}"><fmt:message key="edit"/></a></td>
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/show_create'"><fmt:message key="create.product"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/managerPage/show_create'"><fmt:message key="create.product"/></button>
         </div>
         <%@ include file="parts/pagination.jsp" %>
     </div>

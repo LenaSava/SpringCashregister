@@ -46,8 +46,8 @@
                     </tr>
                 </c:forEach>
             </table>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/x_report'"><fmt:message key="x.report"/></button>
-            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/y_report'"><fmt:message key="y.report"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/billsPage/x_report'"><fmt:message key="x.report"/></button>
+            <button class="w3-btn w3-hover-light-blue w3-round-large" onclick="location.href='/billsPage/y_report'"><fmt:message key="y.report"/></button>
             <br>
         </div>
     </div>

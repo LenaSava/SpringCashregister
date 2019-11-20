@@ -13,17 +13,15 @@ import java.util.Set;
 @Table(name = "bill")
 public class Bill {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
     @Column(name="totalCost")
-    private Integer totalCost;
+    private Double totalCost;
     @Column(name="dates")
     private Date dates;
-    @ElementCollection(targetClass = BillStatus.class, fetch = FetchType.LAZY)
-    @CollectionTable(name = "bill_status", joinColumns = @JoinColumn(name = "bill_id"))
     @Enumerated(value = EnumType.STRING)
-    private Set<BillStatus> status;
+    private BillStatus status;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User userId;
@@ -36,11 +34,11 @@ public class Bill {
         this.id = id;
     }
 
-    public Integer getTotalCost() {
+    public Double getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(Integer totalCost) {
+    public void setTotalCost(Double totalCost) {
         this.totalCost = totalCost;
     }
 
@@ -52,11 +50,11 @@ public class Bill {
         this.dates = dates;
     }
 
-    public Set<BillStatus> getStatus() {
+    public BillStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Set<BillStatus> status) {
+    public void setStatus(BillStatus status) {
         this.status = status;
     }
 
