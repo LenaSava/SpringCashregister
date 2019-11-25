@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface BillRepo extends JpaRepository<Bill, Integer> {
 
-    Bill findAllById(int id);
+    Bill findById(int id);
 
 
       List<Bill> findBillByStatus(BillStatus status);

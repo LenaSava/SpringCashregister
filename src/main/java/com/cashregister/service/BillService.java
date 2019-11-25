@@ -12,9 +12,9 @@ public interface BillService {
 
     Iterable<Bill> findOrCreate(int userId);
 
-    Bill findById(int id);
+//    Bill findById(int id);
 
-    void confirm(Integer id);
+    void confirm(int id);
 
 
     void cancel(Integer id);

@@ -40,6 +40,16 @@ public class BillsPageController {
     @GetMapping("/confirm_bill")
     public String confirmBill(@RequestParam(name = "id") String id, Model model) {
         billService.confirm(Integer.parseInt(id));
+        List<Bill> bills = billService.getAllBills();
+        model.addAttribute("bills", bills);
+        return "billPage";
+    }
+
+    @GetMapping("/cancel_bill")
+    public String cancelBill(@RequestParam(name = "id") String id, Model model) {
+        billService.cancel(Integer.parseInt(id));
+        List<Bill> bills = billService.getAllBills();
+        model.addAttribute("bills", bills);
         return "billPage";
     }
 }

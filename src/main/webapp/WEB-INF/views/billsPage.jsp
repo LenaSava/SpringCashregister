@@ -41,8 +41,8 @@
                         <td>${bill.status}</td>
                         <td>${bill.userId.id}</td>
                         <td>${bill.totalCost}</td>
-                        <td><a href="/confirm_bill?id=${bill.id}"><fmt:message key="confirm"/></a></td>
-                        <td><a href="/cancel_bill?id=${bill.id}"><fmt:message key="cancel"/></a></td>
+                        <td><a href="/billsPage/confirm_bill?id=${bill.id}"><fmt:message key="confirm"/></a></td>
+                        <td><a href="/billsPage/cancel_bill?id=${bill.id}"><fmt:message key="cancel"/></a></td>
                     </tr>
                 </c:forEach>
             </table>

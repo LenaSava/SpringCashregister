@@ -28,16 +28,16 @@ public class BillServiceImpl implements BillService {
         return billRepo.findAllById(Collections.singleton(1));
     }
 
-    @Override
     public Bill findById(int id){
-        return billRepo.findAllById(id);
+        return (Bill) billRepo.findAllById(Collections.singleton(id));
     }
 
     @Override
-    public void confirm(Integer id) {
-       Bill billa = billRepo.findById(id).get();
+    public void confirm(int id) {
+       Bill billa = billRepo.findById(id);
        billa.setStatus(BillStatus.CONFIRM);
        billRepo.save(billa);
+        System.out.println(billa);
     }
 
     @Override
@@ -45,6 +45,8 @@ public class BillServiceImpl implements BillService {
         Bill billa = billRepo.findById(id).get();
         billa.setStatus(BillStatus.CANCEL);
         billRepo.save(billa);
+        System.out.println(billa);
+
     }
 
 
