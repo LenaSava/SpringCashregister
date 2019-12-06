@@ -4,6 +4,7 @@ import com.cashregister.domain.type.Role;
 import com.cashregister.repository.UserRepo;
 
 import com.cashregister.domain.User;
+import com.cashregister.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,9 @@ public class RegistrationController {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/registration")
     public String registration() {
         return "registration";
@@ -26,17 +30,7 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model) {
-        User userFromDb = userRepo.findByUsername(user.getUsername());
 
-        if (userFromDb != null) {
-            model.put("message", "User exists!");
-            return "registration";
-        }
-
-        user.setRole(Role.CAHIER);
-        userRepo.save(user);
-
-
-        return "redirect:/login";
+        return userService.addUser(user);
     }
 }
