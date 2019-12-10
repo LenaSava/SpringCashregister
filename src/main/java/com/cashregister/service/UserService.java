@@ -14,6 +14,4 @@ public interface UserService {
 
     String addUser(User user);
 
-//    UserDetails loadUserByUsername(String username);
-
 }

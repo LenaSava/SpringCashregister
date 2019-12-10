@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
     public String addUser(User user) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
